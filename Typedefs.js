@@ -1,8 +1,5 @@
-const { gql } = require("apollo-server-express");
-// const Pend_Order = require("./OrderDB");
 
-
-const typeDefs = gql`
+const typeDefs = `#graphql
   type ShoesDataHome {
     productname : String!
     img : String!

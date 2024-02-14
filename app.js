@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
-const { ApolloServer, gql } = require("apollo-server-express");
+const { ApolloServer } = require("@apollo/server");
+const { expressMiddleware } = require("@apollo/server/express4");
 const RegistrationModel = require("./Mongodb");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
@@ -25,7 +26,7 @@ async function Start() {
 
     await server.start()
     // Apply middleware to express app
-    server.applyMiddleware({ app, path: '/graphql' });
+    app.use("/graphql", expressMiddleware(server))
 
 
 
